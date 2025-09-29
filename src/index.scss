@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=FAMILY_NAME:wght@WEIGHT_OR_RANGE&display=swap');
+
+
+
+:root {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  // font-weight: <weight>;
+  font-style: normal;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  /* this removes the default color */
+}
+
+* {
+  box-sizing: border-box;
+}
+
