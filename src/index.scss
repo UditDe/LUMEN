@@ -1,5 +1,5 @@
+@use 'variables' as *;
 @import url('https://fonts.googleapis.com/css2?family=FAMILY_NAME:wght@WEIGHT_OR_RANGE&display=swap');
-
 
 
 :root {
@@ -12,6 +12,8 @@
 
 body {
   margin: 0;
+  background-color: $bg-color;
+  color: $text-color;
 }
 
 a {
