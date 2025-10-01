@@ -6,16 +6,30 @@
     justify-content: center;
     height: 100vh;
     width: 100vw;
+    // for left containers
     .left-container {
-        width: 20%;
         height: 100%;
         background-color: $primary-color;
         padding: 20px;
         display: flex;
-        align-items: center;        
+        align-items: center;
+        transition: width 0.3s ease;;       
     }
+    .not-collapsed {
+        width: 20%;
+    }
+    .collapsed {
+        width: 5%;
+    }
+    // for right containers
     .right-container {
-        width: 80%;
         height: 100%;
+        transition: width 0.3s ease;;
+    }
+    .expand-right {
+        width: 95%;
+    }
+    .shirnk-right {
+        width: 80%;
     }
 }

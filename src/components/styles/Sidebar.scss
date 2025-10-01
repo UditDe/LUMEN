@@ -7,11 +7,25 @@
     align-items: center;
     flex-direction: column;
     overflow-y: hidden;
+    overflow-x: hidden;
+    transition: all 0.3s ease;;
+    .toggle-btn {
+        align-self: flex-end;
+        font-size: x-large;        
+    }
     img {
         width: 100%;
         height: auto;
         background-size: cover; // Crops
         background-position: center;
+    }
+    .collapsed-image {
+        background-color: $bg-color;
+        border-radius: 50%;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        display: block;
     }
     h2 {
         font-weight: 700;
@@ -50,6 +64,11 @@
             }
         }
     }
+    .option-list-container-collapsed {
+        height: 90%;
+        display: flex;
+        align-self: center;
+    }
     .account-info-container {
         display: flex;
         align-items: center;
@@ -60,5 +79,11 @@
         border-radius: 5px;
         font-size: larger;
         width: 100%;
+    }
+    .account-info-container-collapsed {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
