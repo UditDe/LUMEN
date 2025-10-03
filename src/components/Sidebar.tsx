@@ -5,7 +5,7 @@ import { GiNinjaHeroicStance } from "react-icons/gi";
 import { GiPowerLightning } from "react-icons/gi";
 import { GiProcessor } from "react-icons/gi";
 import { GoSidebarExpand } from "react-icons/go";
-import { GoSidebarCollapse } from "react-icons/go";
+// import { GoSidebarCollapse } from "react-icons/go";
 
 type Sidebar_type = {
     isCollapsed: boolean;

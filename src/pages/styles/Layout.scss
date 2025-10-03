@@ -13,21 +13,21 @@
         padding: 20px;
         display: flex;
         align-items: center;
-        transition: width 0.3s ease;;       
+        transition: all 0.3s ease;;       
     }
     .not-collapsed {
         width: 20%;
     }
     .collapsed {
-        width: 5%;
+        width: 4%;
     }
     // for right containers
     .right-container {
         height: 100%;
-        transition: width 0.3s ease;;
+        transition: all 0.3s ease;;
     }
     .expand-right {
-        width: 95%;
+        width: 96%;
     }
     .shirnk-right {
         width: 80%;

@@ -1,6 +1,7 @@
 import type { RouteObject } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Auth from "./pages/Auth";
+import CodeEditor from "./pages/CodeEditor";
 
 export const routerConfig: RouteObject[] = [
     {
@@ -10,6 +11,10 @@ export const routerConfig: RouteObject[] = [
             {
                 path: "/auth",
                 element: <Auth />
+            },
+            {
+                path: "/solve",
+                element: <CodeEditor />
             },
             {
                 path: "*",
