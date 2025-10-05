@@ -9,12 +9,22 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 40px;
+    gap: 25px;
     background-color: $primary-color;
     span {
         background-color: $primary-two-color;
-        padding: 20px;
+        padding: 10px 20px;
         border-radius: 5px;
+        border: 1px solid transparent;
         cursor: pointer;
+        transition: all ease 0.25s;
+        &:hover {
+            border: 1px solid $text-color;
+        }
+    }
+
+    .active-span {
+        background-color: $text-color;
+        color: $bg-color;
     }
 }

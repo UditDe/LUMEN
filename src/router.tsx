@@ -1,5 +1,5 @@
 import type { RouteObject } from "react-router-dom";
-import Layout from "./pages/Layout";
+import Layout from "./pages/Layout/Layout";
 import Auth from "./pages/Auth";
 import CodeEditor from "./pages/CodeEditor";
 

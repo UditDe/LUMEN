@@ -1,0 +1,47 @@
+@use "../../variables" as *;
+
+.ide-container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    .resizer-horizontal {
+        width: 100%;
+        height: 5px;
+        background-color: $primary-color;
+        cursor: row-resize;
+    }
+    
+    .submission-btn-group {
+        width: 100%;
+        height: max-content;
+        padding: 20px 30px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 25px;
+        background-color: $primary-color;
+        margin-top: 10px;
+        button {
+            background-color: $primary-two-color;
+            color: $text-color;
+            font-size: large;
+            outline: none;
+            border: 1px solid transparent;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all ease 0.25s;
+            &:hover {
+                border: 1px solid $text-color;
+            }
+            &:active {
+                background-color: $text-color;
+                color: $bg-color;
+            }
+        }
+    }
+
+}

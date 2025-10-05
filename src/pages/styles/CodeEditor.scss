@@ -1,5 +1,8 @@
+@use "../../variables" as *;
+
 .code-editor-page-container {
     display: flex;
+    flex-direction: row;
     align-items: flex-start;
     height: 100%;
     width: 100%;
@@ -32,13 +35,15 @@
         }
     }
     .ide-section {
-        flex: 1;
         height: 100%;
         padding: 20px;
+        flex: 1;
+        // min-width: 50%;
     }
     .resizer {
-        width: 3px;
+        width: 5px;
         height: 100%;
+        background-color: $primary-color;
         cursor: col-resize;
     }
 }
