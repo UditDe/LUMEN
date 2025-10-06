@@ -18,7 +18,7 @@
         ::-webkit-scrollbar {
             width: 10px; /* width of the scrollbar */
         }
-        
+
         ::-webkit-scrollbar-track {
             background: #1e1e1e; /* track color */
             border-radius: 10px;
@@ -41,9 +41,26 @@
         // min-width: 50%;
     }
     .resizer {
-        width: 5px;
+        width: 2px;
         height: 100%;
-        background-color: $primary-color;
+        background-color: $text-color;
         cursor: col-resize;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .resizer-icon {
+            padding: 3px;
+            z-index: 10;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            background-color: $text-color;
+            color: black;
+            font-size: x-large;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     }
 }

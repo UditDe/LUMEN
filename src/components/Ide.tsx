@@ -3,6 +3,7 @@ import LanguageSelector from "./LanguageSelector";
 import "./styles/Ide.scss";
 import { useRef, useState } from "react";
 import { CODE_SNIPPETS } from "../Constants/boilerPlates";
+import { GoUnfold } from "react-icons/go";
 
 export type Lang = keyof typeof CODE_SNIPPETS;
 
@@ -61,7 +62,7 @@ const Ide = () => {
                         enabled: false,
                     },
                 }}
-                height={`${height || 60}%`}
+                height={`${(height && height > 20) ? (height) : 20}%`}
                 theme="vs-dark"
                 language={language}
                 defaultValue={CODE_SNIPPETS[language]}
@@ -72,7 +73,11 @@ const Ide = () => {
             <div
                 className="resizer-horizontal"
                 onMouseDown={startVerticalDragging}
-            />
+            >
+                <div className="resizer-icon">
+                    <GoUnfold />
+                </div>
+            </div>
             <div className="submission-btn-group">
                 <button>Run Code</button>
             </div>

@@ -1,14 +1,13 @@
 import { useRef, useState } from "react";
 import ProlemStatement from "../components/ProlemStatement";
 import Ide from "../components/Ide";
-import "./styles/CodeEditor.scss"
+import "./styles/CodeEditor.scss";
+import { GoArrowBoth } from "react-icons/go";
 
 const CodeEditor = () => {
-    
     const containerRef = useRef<HTMLDivElement | null>(null);
 
     const [width, setWidth] = useState<number>(50); // percentage
-    
 
     const startDragging = () => {
         const container = containerRef.current;
@@ -40,7 +39,11 @@ const CodeEditor = () => {
             >
                 <ProlemStatement />
             </div>
-            <div className="resizer" onMouseDown={startDragging} />
+            <div className="resizer" onMouseDown={startDragging}>
+                <div className="resizer-icon">
+                    <GoArrowBoth />
+                </div>
+            </div>
             <div className="ide-section" style={{ width: `${100 - width}%` }}>
                 <Ide />
             </div>
