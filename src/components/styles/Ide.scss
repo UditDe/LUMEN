@@ -24,10 +24,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            
         }
     }
-    
+
     .submission-btn-group {
         width: 100%;
         height: max-content;
@@ -36,7 +35,7 @@
         margin-bottom: 10px;
         display: flex;
         align-items: center;
-        justify-content: flex-end;
+        justify-content: space-between;
         gap: 25px;
         background-color: $primary-color;
         margin-top: 10px;
@@ -58,6 +57,58 @@
                 color: $bg-color;
             }
         }
+        .custom-input-btn {
+            display: flex;
+            align-items: center;
+            gap: 5px
+        }
     }
 
+    .custom-input {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        align-items: center;
+        textarea {
+            width: 100%;
+            background-color: #1e1e1e;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            resize: none;
+            overflow: "hidden",
+        }
+    }
+
+    .output-container {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        h2 {
+            align-self: flex-start;
+        }
+        .custom-output {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            .output-elements {
+                display: flex;
+                width: 50%;
+                align-items: flex-start;
+                flex-direction: column;
+                margin: 5px;
+            }
+            .result, .expected {
+                width: 100%;
+                background-color: #1e1e1e;
+                color: white;
+                padding: 10px;
+                border-radius: 5px;
+                resize: none;
+                overflow: "hidden",
+            }
+        }
+    }
 }
