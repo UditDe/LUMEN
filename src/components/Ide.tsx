@@ -1,11 +1,12 @@
 import { Editor } from "@monaco-editor/react";
 import LanguageSelector from "./LanguageSelector";
 import "./styles/Ide.scss";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CODE_SNIPPETS } from "../Constants/boilerPlates";
 import { GoUnfold } from "react-icons/go";
 import { MdOutlineCancel } from "react-icons/md";
 import { useAutoResizeTextarea } from "../utils/useAutoResizeTextarea";
+import { executeCode } from "../services/api.compiler";
 
 export type Lang = keyof typeof CODE_SNIPPETS;
 
@@ -14,13 +15,18 @@ const Ide = () => {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const textareaRef = useAutoResizeTextarea();
 
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState<string>("");
     const [language, setLanguage] = useState<Lang>("cpp");
     const [height, setHeight] = useState(60);
     const [activeCustomInput, setActiveCustomInput] = useState<boolean>(false);
     const [stdIn, setStdIn] = useState<string>("");
     const [expected, setExpected] = useState<string>("");
     const [result, setResult] = useState<string>("");
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+
+    useEffect(() => {
+        setValue(CODE_SNIPPETS[language]);
+    }, [language]);
 
     const onMount = (editor: any) => {
         editorRef.current = editor;
@@ -60,6 +66,33 @@ const Ide = () => {
         document.addEventListener("mouseup", onMouseUp);
     };
 
+    const runCode = async (language: string, input_stream: string) => {
+        setIsLoading(true);
+        setExpected("");
+        const version = sessionStorage.getItem(language as string);
+        if (version) {
+            console.log(
+                "language, value, version, input_stream => ",
+                language,
+                value,
+                version,
+                input_stream
+            );
+            const resp = await executeCode(
+                language,
+                value,
+                version,
+                input_stream
+            );
+            if (resp.run.output) {
+                setExpected(resp.run.output);
+                setIsLoading(false);
+            } else setExpected("Nothing to Print");
+        } else {
+            console.log("version is not avaliable");
+        }
+    };
+
     return (
         <div className="ide-container" ref={containerRef}>
             <LanguageSelector langSelector={langSelector} lang={language} />
@@ -90,14 +123,22 @@ const Ide = () => {
                     className="custom-input-btn"
                     onClick={() => setActiveCustomInput(!activeCustomInput)}
                 >
-                    {!activeCustomInput ? "Custom Input" : (
+                    {!activeCustomInput ? (
+                        "Custom Input"
+                    ) : (
                         <>
                             Clear Inputs
                             <MdOutlineCancel />
                         </>
                     )}
                 </button>
-                <button>Run Code</button>
+                {isLoading ? (
+                    <div className="loader" />
+                ) : (
+                    <button onClick={() => runCode(language, stdIn)}>
+                        Run Code
+                    </button>
+                )}
             </div>
             {activeCustomInput && (
                 <div className="custom-input">
@@ -113,6 +154,7 @@ const Ide = () => {
             <div className="output-container">
                 <h2>Output</h2>
                 <div className="custom-output">
+                    {/* these value will come from compiler */}
                     <div className="output-elements">
                         <h4>Your Code's :</h4>
                         <textarea
@@ -125,6 +167,7 @@ const Ide = () => {
                             disabled
                         />
                     </div>
+                    {/* these value will come from db */}
                     <div className="output-elements">
                         <h4>Expected :</h4>
                         <textarea
