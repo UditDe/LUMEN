@@ -66,9 +66,19 @@ const Ide = () => {
         document.addEventListener("mouseup", onMouseUp);
     };
 
+    const handleInputs = (input: string) => {
+        // Convert all newlines and tabs into literal \n and \t
+        const escaped = input.replace(/\n/g, "\\n").replace(/\t/g, "\\t");
+
+        // Add quotes around it for exact string representation
+        const quoted = `"${escaped}"`;
+        return quoted;
+    };
+
     const runCode = async (language: string, input_stream: string) => {
         setIsLoading(true);
         setExpected("");
+        input_stream = handleInputs(input_stream);
         const version = sessionStorage.getItem(language as string);
         if (version) {
             console.log(
@@ -85,7 +95,7 @@ const Ide = () => {
                 input_stream
             );
             if (resp.run.output) {
-                setExpected(resp.run.output);
+                setResult(resp.run.output);
                 setIsLoading(false);
             } else setExpected("Nothing to Print");
         } else {
@@ -121,7 +131,10 @@ const Ide = () => {
             <div className="submission-btn-group">
                 <button
                     className="custom-input-btn"
-                    onClick={() => setActiveCustomInput(!activeCustomInput)}
+                    onClick={() => {
+                        setActiveCustomInput(!activeCustomInput);
+                        setStdIn("");
+                    }}
                 >
                     {!activeCustomInput ? (
                         "Custom Input"
@@ -151,37 +164,25 @@ const Ide = () => {
                     />
                 </div>
             )}
-            <div className="output-container">
-                <h2>Output</h2>
-                <div className="custom-output">
-                    {/* these value will come from compiler */}
-                    <div className="output-elements">
-                        <h4>Your Code's :</h4>
-                        <textarea
-                            name="code-output"
-                            ref={textareaRef}
-                            id="std-in"
-                            className="result"
-                            value={expected}
-                            onChange={(e) => setExpected(e.target.value)}
-                            disabled
-                        />
-                    </div>
-                    {/* these value will come from db */}
-                    <div className="output-elements">
-                        <h4>Expected :</h4>
-                        <textarea
-                            name="code-output-expected"
-                            ref={textareaRef}
-                            id="std-in"
-                            className="expected"
-                            value={result}
-                            onChange={(e) => setResult(e.target.value)}
-                            disabled
-                        />
+            {result.length > 0 && (
+                <div className="output-container">
+                    <h2>Output</h2>
+                    <div className="custom-output">
+                        {/* these value will come from compiler */}
+                        <div className="output-elements">
+                            <h4>Your Code's :</h4>
+                            <div className="result">{result}</div>
+                        </div>
+                        {/* these value will come from db */}
+                        {expected.length > 0 && (
+                            <div className="output-elements">
+                                <h4>Expected :</h4>
+                                <div className="expected">{expected}</div>
+                            </div>
+                        )}
                     </div>
                 </div>
-            </div>
+            )}
         </div>
     );
 };
