@@ -6,7 +6,7 @@ import { CODE_SNIPPETS } from "../Constants/boilerPlates";
 import { GoUnfold } from "react-icons/go";
 import { MdOutlineCancel } from "react-icons/md";
 import { useAutoResizeTextarea } from "../utils/useAutoResizeTextarea";
-import { executeCode } from "../services/api.compiler";
+import { executeCode_v2 } from "../services/api.compiler";
 
 export type Lang = keyof typeof CODE_SNIPPETS;
 
@@ -26,7 +26,7 @@ const Ide = () => {
 
     useEffect(() => {
         setValue(CODE_SNIPPETS[language]);
-    }, [language]);
+    }, []);
 
     const onMount = (editor: any) => {
         editorRef.current = editor;
@@ -66,41 +66,20 @@ const Ide = () => {
         document.addEventListener("mouseup", onMouseUp);
     };
 
-    const handleInputs = (input: string) => {
-        // Convert all newlines and tabs into literal \n and \t
-        const escaped = input.replace(/\n/g, "\\n").replace(/\t/g, "\\t");
-
-        // Add quotes around it for exact string representation
-        const quoted = `"${escaped}"`;
-        return quoted;
-    };
-
-    const runCode = async (language: string, input_stream: string) => {
+    const runCode = async (input_stream: string = "") => {
         setIsLoading(true);
         setExpected("");
-        input_stream = handleInputs(input_stream);
-        const version = sessionStorage.getItem(language as string);
-        if (version) {
-            console.log(
-                "language, value, version, input_stream => ",
-                language,
-                value,
-                version,
-                input_stream
-            );
-            const resp = await executeCode(
-                language,
-                value,
-                version,
-                input_stream
-            );
-            if (resp.run.output) {
-                setResult(resp.run.output);
-                setIsLoading(false);
-            } else setExpected("Nothing to Print");
-        } else {
-            console.log("version is not avaliable");
+        try {
+            const resp = await executeCode_v2(value, input_stream);
+            if(resp && resp.output) {
+                setResult(resp.output);
+            } else {
+                console.log("resp : \n", resp);
+            }
+        } catch (err) {
+            console.log("API Call failed");
         }
+        setIsLoading(false);
     };
 
     return (
@@ -148,7 +127,7 @@ const Ide = () => {
                 {isLoading ? (
                     <div className="loader" />
                 ) : (
-                    <button onClick={() => runCode(language, stdIn)}>
+                    <button onClick={() => runCode(stdIn)}>
                         Run Code
                     </button>
                 )}

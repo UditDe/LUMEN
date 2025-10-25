@@ -2,10 +2,10 @@
 
 .ide-container {
     display: flex;
-    height: 100%;
+    height: 100vh;
     flex-direction: column;
     align-items: flex-start;
-    overflow-y: auto;
+    // overflow-y: hidden;
     scroll-behavior: smooth;
     transition: all ease;
     .resizer-horizontal {

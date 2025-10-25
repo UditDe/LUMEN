@@ -1,8 +1,6 @@
 import type React from "react";
 import "./styles/LanguageSelector.scss";
 import type { Lang } from "./Ide";
-import { useEffect, useState } from "react";
-import { getRuntimes } from "../services/api.compiler";
 
 type LanguageSelector_type = {
     lang: Lang;
@@ -19,38 +17,15 @@ const LanguageSelector: React.FC<LanguageSelector_type> = ({
     langSelector,
     lang,
 }) => {
-    const [langList, setLangList] = useState<LangVersions_type | null>(null);
-    useEffect(() => {
-        (async () => {
-            const resp: LangVersions_type = await getRuntimes();
-            if (resp) {
-                setLangList(resp);
-                sessionStorage.setItem("cpp", resp.cpp as string);
-                sessionStorage.setItem("java", resp.java as string);
-                sessionStorage.setItem("python", resp.python as string);
-            }
-        })();
-    }, []);
     return (
         <div className="lang-navbar">
             <span
                 onClick={() => langSelector("cpp")}
                 className={`${lang === "cpp" ? "active-span" : ""}`}
             >
-                CPP {`(${langList?.cpp})`}
+                CPP {`(13.3.3)`}
             </span>
-            <span
-                onClick={() => langSelector("java")}
-                className={`${lang === "java" ? "active-span" : ""}`}
-            >
-                JAVA {`(${langList?.java})`}
-            </span>
-            <span
-                onClick={() => langSelector("python")}
-                className={`${lang === "python" ? "active-span" : ""}`}
-            >
-                PYTHON {`(${langList?.python})`}
-            </span>
+            
         </div>
     );
 };
