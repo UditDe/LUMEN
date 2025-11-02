@@ -19,9 +19,16 @@ const Home: React.FC = () => {
                         option={option}
                         handleOptions={handleOptions}
                     />
-                    {option !== "" && <SidebarChild option={option} />}
+                    {option !== "" && (
+                        <SidebarChild
+                            option={option}
+                            closeSidebar={handleOptions}
+                        />
+                    )}
                 </div>
-                <div className="right-container">cacds</div>
+                <div className="right-container">
+                  
+                </div>
             </div>
         </div>
     );
