@@ -1,32 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import "./SidebarMain.scss";
 import { LuCodeXml } from "react-icons/lu";
 import { BsCpu } from "react-icons/bs";
+import type { SidebarMain_Props } from "../../types/navbarOptions";
 
-type activeIcon = "qs-list" | "ai-support" | "";
 
-const SidebarMain: React.FC = () => {
-    const [activeIcon, setActive] = useState<activeIcon>("");
 
-    // this one handles the ui effects on logos while selection
-    const handleActiveIcons = (str: activeIcon) => {
-        setActive(str);
-    };
+const SidebarMain: React.FC<SidebarMain_Props> = ({option, handleOptions}) => {
+    
     return (
         <div className="fixed-sidebar">
             <div
                 className={`navigation-logo ${
-                    activeIcon === "qs-list" && "active-for-border"
+                    option === "qs-list" && "active-for-border"
                 }`}
-                onClick={() => handleActiveIcons("qs-list")}
+                onClick={() => handleOptions("qs-list")}
             >
                 <LuCodeXml size={25} />
             </div>
             <div
                 className={`navigation-logo ${
-                    activeIcon === "ai-support" && "active-for-border"
+                    option === "ai-support" && "active-for-border"
                 }`}
-                onClick={() => handleActiveIcons("ai-support")}
+                onClick={() => handleOptions("ai-support")}
             >
                 <BsCpu size={25} />
             </div>

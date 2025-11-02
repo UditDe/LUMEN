@@ -1,0 +1,38 @@
+@use "../../variables" as *;
+.collapsable-sidebar {
+    display: flex;
+    background-color: $bg-color-two;
+    align-items: flex-start;
+    flex-direction: column;
+    border-right: 1px solid $border-color;
+    min-width: fit-content;
+    width: max-content;
+    height: calc(100vh - 35px);
+    padding: 8px;
+    .sidebar-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 250px;
+        height: fit-content;
+        margin: 8px;
+        span {
+            font-size: medium;
+        }
+        .header-close-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            height: fit-content;
+            width: auto;
+            transition: all ease 250ms;
+            &:hover {
+                border: 1px solid $border-color;
+            }
+        }
+    }
+}

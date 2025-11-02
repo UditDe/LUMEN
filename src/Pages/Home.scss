@@ -30,9 +30,11 @@
         height: 100%;
         .left-container {
             width: fit-content;
+            display: flex;
+            align-items: flex-start;
         }
         .right-container {
-            background-color: $bg-color-two;
+            background-color: $bg-color;
             height: 100%;
             width: 100%;
         }
