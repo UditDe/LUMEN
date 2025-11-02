@@ -1,6 +1,9 @@
+@use "../variables" as *;
 .layout {
     display: flex;
     flex-direction: column;
+    width: 100vw;
+    height: 100vh;
     /* For Chrome, Edge, and Safari */
     ::-webkit-scrollbar {
         width: 10px; /* width of the scrollbar */
@@ -22,6 +25,16 @@
     }
     .main-container {
         display: flex;
+        flex-direction: row;
         width: 100vw;
+        height: 100%;
+        .left-container {
+            width: fit-content;
+        }
+        .right-container {
+            background-color: $bg-color-two;
+            height: 100%;
+            width: 100%;
+        }
     }
 }
