@@ -1,0 +1,52 @@
+@use "../../variables" as *;
+.question-container {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: calc(100vh - 35px);
+    background-color: $bg-color;
+    // width: 50%;
+    .qs-header-section {
+        background-color: $bg-color-two;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 10px;
+        h4 {
+            height: 100%;
+            background-color: $bg-color;
+            width: max-content;
+            margin: 0px;
+            padding: 10px;
+            border-right: 1px solid $border-color;
+            border-top-right-radius: 4px;
+            // border-top-left-radius: 4px;
+            // margin-left: 10px;
+        }
+        button {
+            height: 80%;
+            width: auto;
+            background-color: $bg-color;
+            color: $button;
+            outline: none;
+            border: 1px solid $button;
+            border-radius: 4px;
+            cursor: pointer;
+            
+        }
+    }
+    .qs-content{
+        padding-left: 10px;
+        border-top: 1px solid $border-color;
+        width: 100%;
+    }
+    pre {
+        background-color: $bg-color-two;
+        width: 50%;
+        padding: 10px;
+        border-radius: 4px;
+        line-height: 20px;
+    }
+}

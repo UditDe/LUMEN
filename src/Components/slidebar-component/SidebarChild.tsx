@@ -7,12 +7,13 @@ import { IoClose } from "react-icons/io5";
 import "./SidebarChild.scss";
 import { question_list } from "../../Constants/questionList";
 import { truncate_string } from "../../Utils/manage_content";
-import { Tooltip } from "@mui/material";
+import { colors, Tooltip } from "@mui/material";
 
 const SidebarChild: React.FC<SidebarChild_Props> = ({
     option,
     closeSidebar,
-    handle_question_number
+    handle_question_number,
+    selected_indx,
 }) => {
     const [list, setList] = useState<question_type[]>(question_list);
     useEffect(() => {
@@ -33,9 +34,22 @@ const SidebarChild: React.FC<SidebarChild_Props> = ({
             <div className="question-list-with-name-difficulty">
                 {list &&
                     list.map((qs, indx) => (
-                        <div key={indx} className="each-qs" onClick={() => handle_question_number(indx)}>
+                        <div
+                            key={indx}
+                            className="each-qs"
+                            onClick={() => handle_question_number(indx)}
+                        >
                             <Tooltip title={qs.qs_name}>
-                                <span>{truncate_string(qs.qs_name)}</span>
+                                <span
+                                    style={
+                                        selected_indx !== undefined &&
+                                        selected_indx === indx
+                                            ? { color: "#66b2ff" }
+                                            : { color: "#d3dad9" }
+                                    }
+                                >
+                                    {truncate_string(qs.qs_name)}
+                                </span>
                             </Tooltip>
                             <div className="level">{qs.level}</div>
                         </div>

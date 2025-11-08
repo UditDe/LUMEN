@@ -11,12 +11,14 @@ const Home: React.FC = () => {
     const [question_number, setQuestion_number] = useState<
         number | undefined
     >();
+    const [isEditorOpen, setIsEditorOpen] = useState<boolean>(false);
     const handleQuestion_number = (indx: number): void => {
         setQuestion_number(indx);
     };
     const handleOptions = (str: activeIcon) => {
         setOption(str);
     };
+    const toggleIde = () => setIsEditorOpen(!isEditorOpen);
     return (
         <div className="layout">
             <Header />
@@ -31,12 +33,14 @@ const Home: React.FC = () => {
                             option={option}
                             closeSidebar={handleOptions}
                             handle_question_number={handleQuestion_number}
+                            selected_indx={question_number}
                         />
                     )}
                 </div>
                 <div className="right-container">
+
                     {question_number !== undefined && (
-                        <Questions qs_number={question_number} />
+                        <Questions qs_number={question_number} toggle_ide={toggleIde} />
                     )}
                 </div>
             </div>

@@ -7,6 +7,7 @@ export type SidebarChild_Props = {
     option : activeIcon;
     closeSidebar : (str : activeIcon) => void;
     handle_question_number : (indx : number) => void;
+    selected_indx? : number;
 }
 
 export type question_type = {

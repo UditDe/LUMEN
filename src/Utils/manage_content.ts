@@ -3,4 +3,4 @@ export const truncate_string = (str : string) : string => {
     if(str.length > max_len) return str.slice(0, max_len) + "...";
     else return str;
 }
-export const clean_spaces = (desc : string) : string => desc.trim().replace(/^\s+/gm, "");
+export const clean_spaces = (desc : string) : string => desc.trim().replace(/^\s+/gm, "").replace(/^##.*$/m, "").trim();;

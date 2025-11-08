@@ -35,7 +35,9 @@
         }
         .right-container {
             background-color: $bg-color-two;
-            height: 100%;
+            height: calc(100vh - 35px);
+            overflow-y: hidden;
+            scroll-behavior: smooth;
             width: 100%;
         }
     }
