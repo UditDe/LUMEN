@@ -1,4 +1,4 @@
-export type activeIcon = "qs-list" | "ai-support" | "";
+export type activeIcon = "Questions" | "Ask LUMEN" | "";
 export type SidebarMain_Props = {
     option : activeIcon;
     handleOptions : (str : activeIcon) => void;
@@ -6,6 +6,7 @@ export type SidebarMain_Props = {
 export type SidebarChild_Props = {
     option : activeIcon;
     closeSidebar : (str : activeIcon) => void;
+    handle_question_number : (indx : number) => void;
 }
 
 export type question_type = {

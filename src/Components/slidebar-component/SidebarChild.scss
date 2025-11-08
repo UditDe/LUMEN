@@ -44,12 +44,21 @@
         gap: 8px;
         font-size: small;
         cursor: pointer;
+        width: 100%;
 
         .each-qs{
             display: flex;
             align-items: center;
             justify-content: space-between;
             width: 100%;
+            .level {
+                background-color: $easy;
+                padding: 4px;
+                border-radius: 4px;
+            }
+            span {
+                max-width: 70%;
+            }
         }
     }
 }

@@ -12,17 +12,17 @@ const SidebarMain: React.FC<SidebarMain_Props> = ({option, handleOptions}) => {
         <div className="fixed-sidebar">
             <div
                 className={`navigation-logo ${
-                    option === "qs-list" && "active-for-border"
+                    option === "Questions" && "active-for-border"
                 }`}
-                onClick={() => handleOptions("qs-list")}
+                onClick={() => handleOptions("Questions")}
             >
                 <LuCodeXml size={25} />
             </div>
             <div
                 className={`navigation-logo ${
-                    option === "ai-support" && "active-for-border"
+                    option === "Ask LUMEN" && "active-for-border"
                 }`}
-                onClick={() => handleOptions("ai-support")}
+                onClick={() => handleOptions("Ask LUMEN")}
             >
                 <BsCpu size={25} />
             </div>
