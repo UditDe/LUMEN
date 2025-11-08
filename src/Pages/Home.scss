@@ -36,8 +36,10 @@
         .right-container {
             background-color: $bg-color-two;
             height: calc(100vh - 35px);
-            overflow-y: hidden;
+            overflow: hidden;
             scroll-behavior: smooth;
+            display: flex;
+            align-items: flex-start;
             width: 100%;
         }
     }

@@ -5,12 +5,12 @@ import "./Home.scss";
 import type { activeIcon } from "../types/navbarOptions";
 import SidebarChild from "../Components/slidebar-component/SidebarChild";
 import Questions from "../Components/question-component/Questions";
+import IDE from "../Components/IDE/IDE";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Home: React.FC = () => {
     const [option, setOption] = useState<activeIcon>("");
-    const [question_number, setQuestion_number] = useState<
-        number | undefined
-    >();
+    const [question_number, setQuestion_number] = useState<number>(0);
     const [isEditorOpen, setIsEditorOpen] = useState<boolean>(false);
     const handleQuestion_number = (indx: number): void => {
         setQuestion_number(indx);
@@ -38,10 +38,36 @@ const Home: React.FC = () => {
                     )}
                 </div>
                 <div className="right-container">
+                    <motion.div
+                        key="questions"
+                        animate={{ width: isEditorOpen ? "50%" : "100%" }}
+                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                        className="first-child"
+                    >
+                        <Questions
+                            qs_number={question_number}
+                            open_ide={isEditorOpen}
+                            toggle_ide={toggleIde}
+                        />
+                    </motion.div>
 
-                    {question_number !== undefined && (
-                        <Questions qs_number={question_number} toggle_ide={toggleIde} />
-                    )}
+                    <AnimatePresence>
+                        {isEditorOpen && (
+                            <motion.div
+                                key="ide"
+                                initial={{ x: "100%", width: 0 }}
+                                animate={{ x: 0, width: "50%" }}
+                                exit={{ x: "100%", width: 0 }}
+                                transition={{
+                                    duration: 0.5,
+                                    ease: "easeInOut",
+                                }}
+                                className="second-child"
+                            >
+                                <IDE />
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
             </div>
         </div>

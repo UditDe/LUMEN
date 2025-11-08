@@ -7,7 +7,7 @@ import { IoClose } from "react-icons/io5";
 import "./SidebarChild.scss";
 import { question_list } from "../../Constants/questionList";
 import { truncate_string } from "../../Utils/manage_content";
-import { colors, Tooltip } from "@mui/material";
+import { Tooltip } from "@mui/material";
 
 const SidebarChild: React.FC<SidebarChild_Props> = ({
     option,
