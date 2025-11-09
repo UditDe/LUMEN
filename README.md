@@ -148,9 +148,9 @@ Please ensure your code is linted and builds successfully before submitting.
 
 ## 📝 License
 
-Specify or link the license here, e.g., MIT.
+This project is licensed under the [MIT License](./LICENSE).
 
-> Note: If no explicit license file is provided, it’s recommended to add one for clarity.
+> Note: See the LICENSE file for details.
 
 ## 📬 Contact
 
