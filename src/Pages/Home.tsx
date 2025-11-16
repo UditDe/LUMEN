@@ -7,6 +7,7 @@ import SidebarChild from "../Components/slidebar-component/SidebarChild";
 import Questions from "../Components/question-component/Questions";
 import IDE from "../Components/IDE/IDE";
 import { motion, AnimatePresence } from "framer-motion";
+import Results from "../Components/results-component/Results";
 
 const Home: React.FC = () => {
     const [option, setOption] = useState<activeIcon>("");
@@ -68,6 +69,7 @@ const Home: React.FC = () => {
                             </motion.div>
                         )}
                     </AnimatePresence>
+                    <Results /> 
                 </div>
             </div>
         </div>

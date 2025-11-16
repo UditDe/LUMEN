@@ -16,3 +16,5 @@ export type question_type = {
     description: string;
     level: "easy" | "medium" | "hard";
 };
+
+export type terminal_navigation_type = "testcases" | "custom-testcases" | "";

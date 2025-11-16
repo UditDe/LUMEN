@@ -1,0 +1,62 @@
+@use "../../variables" as *;
+.result-container {
+    position: absolute;
+    width: 100%;
+    // height: 30%;
+    background-color: $bg-color-two;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    bottom: -10px;
+    border: 1px solid $border-color;
+    flex-direction: column;
+    .terminal-header {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        border-bottom: 1px solid $border-color;
+        span {
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            width: fit-content;
+            border-right: 1px solid $border-color;
+            border-top: 2px solid transparent;
+            color: $text-color-secondary;
+
+            &:hover {
+                color: $text-color;
+            }
+        }
+
+        .active-span {
+            border-top: 2px solid $active-color;
+            color: $text-color;
+            background-color: $bg-color;
+        }
+        .open-close-btn {
+            // align-self: flex-end;
+            border-right: none;
+            margin-left: auto;
+            border-left: 1px solid $border-color;
+        }
+        .rotate-btn {
+            transform: rotate(180deg);
+            transition: transform 200ms ease;
+        }
+    }
+    .terminal-content {
+        display: flex;
+        width: 100%;
+        padding: 5px 10px;
+        height: 0;
+        overflow: hidden;
+        transition: height 300ms ease;
+        // background-color: red;
+    }
+    .terminal-content.show {
+        height: 30vh;
+    }
+}
